@@ -1711,6 +1711,17 @@ section {
   padding: 120px 0 60px 0;
   color: rgba(255, 255, 255, 0.8);
 }
+.heroLogin {
+  width: 100%;
+  min-height: 5vh;
+  background-color: var(--color-secondary);
+  background-image: url("../img/hero-bg.png");
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  padding: 50px 0 60px 0;
+  color: rgba(255, 255, 255, 0.8);
+}
 
 .hero h2 {
   margin-bottom: 20px;

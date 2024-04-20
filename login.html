@@ -69,35 +69,11 @@
   <!-- End Header -->
 
   <!-- ======= Hero Section ======= -->
-  <section id="hero" class="hero d-flex align-items-center">
+  <section id="heroLogin" class="heroLogin d-flex align-items-center">
     <div class="container">
-      <div class="row gy-4 d-flex justify-content-between">
-        <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center">
-          <h2 data-aos="fade-up">№1 CV portal in Estonia</h2>
-          <p data-aos="fade-up" data-aos-delay="100">You can find your dreamed job with us!</p>
+      
 
-          <div class="row gy-4" data-aos="fade-up" data-aos-delay="400">
-
-            <div class="col-lg-3 col-6">
-              <div class="stats-item text-center w-100 h-100">
-                <span data-purecounter-start="0" data-purecounter-end="25000" data-purecounter-duration="1" class="purecounter"></span>
-                <p>Clients</p>
-              </div>
-            </div><!-- End Stats Item -->
-
-            <div class="col-lg-3 col-6">
-              <div class="stats-item text-center w-100 h-100">
-                <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter"></span>
-                <p>Companies</p>
-              </div>
-            </div><!-- End Stats Item -->
-
-          </div>
-        </div>
-
-        <div class="col-lg-5 order-1 order-lg-2 hero-img" data-aos="zoom-out">
-          <img src="assets/img/hero-img.svg" class="img-fluid mb-3 mb-lg-0" alt="">
-        </div>
+        
 
       </div>
     </div>
@@ -112,165 +88,54 @@
     <section id="about" class="about pt-5">
       <div class="container" data-aos="fade-up">
 
-        <div class="row gy-4">
+        <div class="row gy-1 justify-content-center">
           <div class="col-lg-6 content order-last  order-lg-first">
-            <h3>About Us</h3>
-            <p>
-           We are small team of 4 persons, who made portal for world with love!
-            </p>
-            <ul>
-              <li data-aos="fade-up" data-aos-delay="100">
-                <i class="bi bi-front"></i>
-                <div>
-                  <h5>Oleksandr Bohatyrov</h5>
-                  <p>Front-end developer</p>
+            <form>
+              <!-- Email input -->
+              <div data-mdb-input-init class="form-outline mb-4">
+                <input type="email" id="form2Example1" class="form-control" />
+                <label class="form-label" for="form2Example1">Email address</label>
+              </div>
+            
+              <!-- Password input -->
+              <div data-mdb-input-init class="form-outline mb-4">
+                <input type="password" id="form2Example2" class="form-control" />
+                <label class="form-label" for="form2Example2">Password</label>
+              </div>
+            
+              <!-- 2 column grid layout for inline styling -->
+              <div class="row mb-4 justify-content-between
+                <div class="col d-flex justify-content-center">
+                  <!-- Checkbox -->
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="form2Example31" checked />
+                    <label class="form-check-label" for="form2Example31"> Remember me </label>
+                  </div>
                 </div>
-              </li>
-              <li data-aos="fade-up" data-aos-delay="200">
-                <i class="bi bi-back"></i>
-                <div>
-                  <h5>Maksim Tsepelevits</h5>
-                  <p>Back-end developer</p>
-                </div>
-              </li>
-              <li data-aos="fade-up" data-aos-delay="300">
-                <i class="bi bi-people"></i>
-                <div>
-                  <h5>Martin Kemppi</h5>
-                  <p>Scrum master</p>
-                </div>
-              </li>
-
-              <li data-aos="fade-up" data-aos-delay="300">
-                <i class="fas fa-suitcase p-2 x-1"></i>
-                <div>
-                  <h5>Maksym Miskevytch</h5>
-                  <p>Product owner</p>
-                </div>
-              </li>
-            </ul>
+            
+               
+              </div>
+              <div class="text-center">
+              <!-- Submit button -->
+              <a href="register.html"><button type="button"  data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4">Sign in</button></a>
+              </div>
+      
+            
+              <!-- Register buttons -->
+              <div class="text-center">
+                <p>Not a member? <a href="register.html">Register</a></p>
+              
+              </div>
+            </form>
+          
           </div>
         </div>
 
       </div>
     </section><!-- End About Us Section -->
 
-    <!-- ======= Services Section ======= -->
-    <section id="service" class="services pt-0">
-      <div class="container" data-aos="fade-up">
 
-        <div class="section-header">
-          <span>Jobs we Provide</span>
-          <h2>Jobs we Provide</h2>
-
-        </div>
-
-        <div class="row gy-4">
-
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-            <div class="card">
-              <div class="card-img">
-                <img src="assets/img/storage-service.jpg" alt="" class="img-fluid">
-              </div>
-              <h3><a class="stretched-link">Storage</a></h3>
-              <p>Work in the warehouse</p>
-            </div>
-          </div><!-- End Card Item -->
-
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-            <div class="card">
-              <div class="card-img">
-                <img src="assets/img/logistics-service.jpg" alt="" class="img-fluid">
-              </div>
-              <h3><a href="service-details.html" class="stretched-link">Logistics</a></h3>
-              <p>Work in logistics companies in warehouses, factories</p>
-            </div>
-          </div><!-- End Card Item -->
-
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-            <div class="card">
-              <div class="card-img">
-                <img src="assets/img/cargo-service.jpg" alt="" class="img-fluid">
-              </div>
-              <h3><a href="service-details.html" class="stretched-link">Cargo</a></h3>
-              <p>Freight work, especially in the freight company </p>
-            </div>
-          </div><!-- End Card Item -->
-
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
-            <div class="card">
-              <div class="card-img">
-                <img src="assets/img/trucking-service.jpg" alt="" class="img-fluid">
-              </div>
-              <h3><a href="service-details.html" class="stretched-link">Trucking</a></h3>
-              <p>Cargo transport work, or trucking, can be varied and include different roles and responsibilities. </p>
-            </div>
-          </div><!-- End Card Item -->
-
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
-            <div class="card">
-              <div class="card-img">
-                <img src="assets/img/packaging-service.jpg" alt="" class="img-fluid">
-              </div>
-              <h3><a href="service-details.html" class="stretched-link">Packaging</a></h3>
-              <p>Packaging plays a key role in the world of business and production. It includes the packaging of goods, products or materials for the protection, storage, transport and sale.</p>
-            </div>
-          </div><!-- End Card Item -->
-
-        </div>
-
-      </div>
-    </section><!-- End Services Section -->
-
-   
-
-    <!-- ======= Pricing Section ======= -->
-    <section id="pricing" class="pricing pt-0">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-header">
-          <span>Pricing</span>
-          <h2>Pricing</h2>
-
-        </div>
-
-        <div class="row gy-2 justify-content-center">
-
-          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
-            <div class="pricing-item ">
-              <h3>Free Plan</h3>
-              <h4><sup>$</sup>0<span> / month</span></h4>
-              <ul>
-                <li><i class="bi bi-check"></i> Create a CV</li>
-                <li><i class="bi bi-check"></i> Up to 5 job responses per day</li>
-                <li class="na"><i class="bi bi-x"></i> <span>Track statistics of CV views</span></li>
-              </ul>
-              <a href="#" class="buy-btn">Buy Now</a>
-            </div>
-          </div><!-- End Pricing Item -->
-
-          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
-            <div class="pricing-item featured">
-              <h3>Business Plan</h3>
-              <h4><sup>$</sup>29<span> / month</span></h4>
-              <ul>
-                <li><i class="bi bi-check"></i> Up to 5 CV</li>
-                <li><i class="bi bi-check"></i> Up to 20 job responses per day</li>
-                <li><i class="bi bi-check"></i> 
-                  Track statistics of CV views</li>
-
-              </ul>
-              <a href="#" class="buy-btn">Buy Now</a>
-            </div>
-          </div><!-- End Pricing Item -->
-
-         
-
-        </div>
-
-      </div>
-    </section><!-- End Pricing Section -->
-
+    
     <!-- ======= Testimonials Section ======= -->
     <section id="testimonials" class="testimonials">
       <div class="container">
