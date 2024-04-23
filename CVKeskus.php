@@ -1,13 +1,8 @@
 <?php
 session_start();
+require_once("conf.php");
+global $yhendus;
 
-// Check if user is not logged in, redirect to login page
-if (!isset($_SESSION["isLoggedIn"]) || !$_SESSION["isLoggedIn"]) {
-    header("Location: login.html");
-    exit;
-}
-
-// User is logged in, display CVKeskus page
 ?>
 
 <!DOCTYPE html>
@@ -55,6 +50,7 @@ if (!isset($_SESSION["isLoggedIn"]) || !$_SESSION["isLoggedIn"]) {
     <!-- Template Main CSS File -->
     <link href="assets/css/main.css" rel="stylesheet" />
 
+
 </head>
 
 <body>
@@ -73,13 +69,11 @@ if (!isset($_SESSION["isLoggedIn"]) || !$_SESSION["isLoggedIn"]) {
         <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
         <nav id="navbar" class="navbar">
             <ul>
-                <li><a href="index.html">Home</a></li>
                 <li><a href="CVKeskus.php" class="active">CV Keskus</a></li>
                 <li><a href="pricing.html">Pricing</a></li>
 
                 <li><a href="contact.html">Contact</a></li>
             </ul>
-            <h2>Welcome, <?php echo $_SESSION["email"]; ?></h2>
             <a href="logout.php">Logout</a>
         </nav>
         <!-- .navbar -->

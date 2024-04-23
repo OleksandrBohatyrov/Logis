@@ -1,13 +1,31 @@
 <?php
 session_start();
+require_once("conf.php");
+global $yhendus;
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Get the submitted data
+    $name = $_POST["name"];
+    $email = $_POST["email"];
+    $password = $_POST["password"];
 
-// Check if user is not logged in, redirect to login page
-if (!isset($_SESSION["isLoggedIn"]) || !$_SESSION["isLoggedIn"]) {
-    header("Location: login.html");
-    exit;
+    // Hash the password for security
+    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+    // Insert the user into the database
+    $stmt = $yhendus->prepare("INSERT INTO account (Name, Email, Password) VALUES (?, ?, ?)");
+    $stmt->bind_param("sss", $name, $email, $hashedPassword);
+
+    if ($stmt->execute()) {
+        // Registration successful, redirect to login page
+        header("Location: login.php");
+        exit;
+    } else {
+        // Registration failed
+        echo "Error: " . $stmt->error;
+    }
+
+    $stmt->close();
 }
-
-// User is logged in, display CVKeskus page
 ?>
 
 <!DOCTYPE html>
@@ -59,7 +77,6 @@ if (!isset($_SESSION["isLoggedIn"]) || !$_SESSION["isLoggedIn"]) {
         <nav id="navbar" class="navbar">
             <ul>
                 <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="CVKeskus.php">CV Keskus</a></li>
                 <li><a href="login.php" class="active">Login</a></li>
                 <li><a href="register.php">Register</a></li>
         </nav><!-- .navbar -->
@@ -71,11 +88,7 @@ if (!isset($_SESSION["isLoggedIn"]) || !$_SESSION["isLoggedIn"]) {
 <!-- ======= Hero Section ======= -->
 <section id="heroLogin" class="heroLogin d-flex align-items-center">
     <div class="container">
-
-
-
-
-    </div>
+  </div>
     </div>
 </section><!-- End Hero Section -->
 
@@ -95,20 +108,20 @@ if (!isset($_SESSION["isLoggedIn"]) || !$_SESSION["isLoggedIn"]) {
                             <div class="card-body p-5">
                                 <h2 class="text-uppercase text-center mb-5">Create an account</h2>
 
-                                <form>
+                                <form action="register.php" method="POST">
 
                                     <div data-mdb-input-init class="form-outline mb-4">
-                                        <input type="text" id="form3Example1cg" class="form-control form-control-lg" />
+                                        <input type="text" id="form3Example1cg" class="form-control form-control-lg" name="name" />
                                         <label class="form-label" for="form3Example1cg">Your Name</label>
                                     </div>
 
                                     <div data-mdb-input-init class="form-outline mb-4">
-                                        <input type="email" id="form3Example3cg" class="form-control form-control-lg" />
+                                        <input type="email" id="form3Example3cg" class="form-control form-control-lg" name="email" />
                                         <label class="form-label" for="form3Example3cg">Your Email</label>
                                     </div>
 
                                     <div data-mdb-input-init class="form-outline mb-4">
-                                        <input type="password" id="form3Example4cg" class="form-control form-control-lg" />
+                                        <input type="password" id="form3Example4cg" class="form-control form-control-lg" name="password" />
                                         <label class="form-label" for="form3Example4cg">Password</label>
                                     </div>
 
@@ -117,19 +130,11 @@ if (!isset($_SESSION["isLoggedIn"]) || !$_SESSION["isLoggedIn"]) {
                                         <label class="form-label" for="form3Example4cdg">Repeat your password</label>
                                     </div>
 
-                                    <div class="form-check d-flex justify-content-center mb-5">
-                                        <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3cg" />
-                                        <label class="form-check-label" for="form2Example3g">
-                                            I agree all statements in <a href="#!" class="text-body"><u>Terms of service</u></a>
-                                        </label>
-                                    </div>
-
                                     <div class="d-flex justify-content-center">
-                                        <button type="button"
-                                                data-mdb-button-init data-mdb-ripple-init class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Register</button>
+                                        <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Register</button>
                                     </div>
 
-                                    <p class="text-center text-muted mt-5 mb-0">Have already an account? <a href="login.html"
+                                    <p class="text-center text-muted mt-5 mb-0">Have already an account? <a href="login.php"
                                                                                                             class="fw-bold text-body"><u>Login here</u></a></p>
 
                                 </form>
@@ -285,9 +290,8 @@ if (!isset($_SESSION["isLoggedIn"]) || !$_SESSION["isLoggedIn"]) {
                 <h4>Useful Links</h4>
                 <ul>
                     <li><a href="index.html" class="active">Home</a></li>
-                    <li><a href="about.html">Maxx CV Keskus</a></li>
-                    <li><a href="login.html" class="active">Login</a></li>
-                    <li><a href="register.html">Register</a></li>
+                    <li><a href="login.php" class="active">Login</a></li>
+                    <li><a href="register.php">Register</a></li>
                 </ul>
             </div>
 

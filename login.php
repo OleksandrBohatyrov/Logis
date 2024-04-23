@@ -1,14 +1,40 @@
 <?php
 session_start();
+require_once 'conf.php';
+global $yhendus;
 
-// Check if user is not logged in, redirect to login page
-if (!isset($_SESSION["isLoggedIn"]) || !$_SESSION["isLoggedIn"]) {
-    header("Location: login.html");
-    exit;
+// Проверяем, отправлена ли форма
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $email = $_POST['Email'];
+    $password = $_POST['Password'];
+
+    // Проверяем, определена ли переменная $connect
+    if (!isset($yhendus)) {
+        die("Ошибка подключения к базе данных.");
+    }
+
+    $check_user = mysqli_query($yhendus, "SELECT * FROM account WHERE Email = '$email'");
+
+    if ($check_user && mysqli_num_rows($check_user) > 0) {
+        $user = mysqli_fetch_assoc($check_user);
+
+        // Проверяем пароль с использованием password_verify
+        if (password_verify($password, $user['Password'])) {
+            $_SESSION['user'] = [
+                "AccountId" => $user['AccountId'],
+                "Email" => $user['Email'],
+            ];
+            header('Location: CVKeskus.php');
+            $check_user->close();
+            exit();
+        }
+    }
+
+
+
 }
-
-// User is logged in, display CVKeskus page
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -90,40 +116,28 @@ if (!isset($_SESSION["isLoggedIn"]) || !$_SESSION["isLoggedIn"]) {
 
             <div class="row gy-1 justify-content-center">
                 <div class="col-lg-6 content order-last  order-lg-first">
-                    <form>
+                    <form action="login.php" method="POST">
                         <!-- Email input -->
                         <div data-mdb-input-init class="form-outline mb-4">
-                            <input type="email" id="form2Example1" class="form-control" />
+                            <input type="email" id="form2Example1" class="form-control" name="Email"/>
                             <label class="form-label" for="form2Example1">Email address</label>
                         </div>
 
                         <!-- Password input -->
                         <div data-mdb-input-init class="form-outline mb-4">
-                            <input type="password" id="form2Example2" class="form-control" />
+                            <input type="password" id="form2Example2" class="form-control" name="Password"/>
                             <label class="form-label" for="form2Example2">Password</label>
                         </div>
-
-                        <!-- 2 column grid layout for inline styling -->
-                        <div class="row mb-4 justify-content-between">
-                            <div class="col d-flex justify-content-center">
-                                <!-- Checkbox -->
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="form2Example31" checked />
-                                    <label class="form-check-label" for="form2Example31"> Remember me </label>
-                                </div>
-                            </div>
-
-
                         </div>
                         <div class="text-center">
                             <!-- Submit button -->
-                            <a href="register.html"><button type="submit"  data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4">Sign in</button></a>
+                            <a href="register.php"><button type="submit"  data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4">Sign in</button></a>
                         </div>
 
 
                         <!-- Register buttons -->
                         <div class="text-center">
-                            <p>Not a member? <a href="register.html">Register</a></p>
+                            <p>Not a member? <a href="register.php">Register</a></p>
 
                         </div>
                     </form>
@@ -277,9 +291,8 @@ if (!isset($_SESSION["isLoggedIn"]) || !$_SESSION["isLoggedIn"]) {
                 <h4>Useful Links</h4>
                 <ul>
                     <li><a href="index.html" class="active">Home</a></li>
-                    <li><a href="about.html">Maxx CV Keskus</a></li>
-                    <li><a href="login.html" class="active">Login</a></li>
-                    <li><a href="register.html">Register</a></li>
+                    <li><a href="login.php" class="active">Login</a></li>
+                    <li><a href="register.php">Register</a></li>
                 </ul>
             </div>
 
