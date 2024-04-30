@@ -1,11 +1,11 @@
 <?php
 session_start();
 require_once ("conf.php");
-if (!isset($_SESSION['user_id'])) {
-    // Если сессия не существует, перенаправляем пользователя на index.html
-    header("Location: index.html");
-    exit; // Убеждаемся, что после перенаправления больше ничего не выполняется
-}
+// if (!isset($_SESSION['user_id'])) {
+//     // Если сессия не существует, перенаправляем пользователя на index.html
+//     header("Location: index.html");
+//     exit; // Убеждаемся, что после перенаправления больше ничего не выполняется
+// }
 global $yhendus;
 
 

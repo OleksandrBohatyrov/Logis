@@ -2,7 +2,7 @@
 session_start();
 require_once("conf.php");
 global $yhendus;
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if(isset($_SERVER['REQUEST_METHOD']) && $_SERVER["REQUEST_METHOD"]== "POST") {
     // Get the submitted data
     $name = $_POST["name"];
     $email = $_POST["email"];
@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($stmt->execute()) {
         // Registration successful, redirect to login page
-        header("Location: login.php");
+        header("Location: CVKeskus.php");
         exit;
     } else {
         // Registration failed

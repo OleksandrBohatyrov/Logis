@@ -4,7 +4,7 @@ require_once 'conf.php';
 global $yhendus;
 
 // Проверяем, отправлена ли форма
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if(isset($_SERVER['REQUEST_METHOD']) && $_SERVER["REQUEST_METHOD"]=== 'POST') {
     $email = $_POST['Email'];
     $password = $_POST['Password'];
 
